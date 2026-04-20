@@ -157,4 +157,5 @@ hainan_all_hour_diet$Group <- substr(hainan_all_hour_diet$Site,start=1,stop=1)
 
 # Write full dataset into a CSV file
 write.csv(hainan_all_hour_diet,"Data/hainan_all_hour_diet.csv",row.names=F)
-write.csv(hainan_bird_hour2_sp,"Data/hainan_bird_hour_sp.csv",row.names=F)
+# This data frame has Chinese letters, so it needs to be written using a different function
+write_excel_csv(hainan_bird_hour2_sp,file="Data/hainan_bird_hour_sp.csv")
