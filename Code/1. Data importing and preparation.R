@@ -40,7 +40,7 @@ library(performance)
 #####
 # 1. Load raw data
 # Import soundscape indices data
-indices_hainan <- read.csv("indices_hainan.csv")
+indices_hainan <- read.csv("Data/site_soundscape_indices.csv")
 # Import bird detection file
 hainan_bird_raw <- read.csv("Data/bird_detection.csv")
 # Import gibbon detection file
