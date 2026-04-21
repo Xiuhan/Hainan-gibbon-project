@@ -1,2 +1,123 @@
-# Hainan-gibbon-project
-Codes and data for monitoring of Hainan gibbon and birds
+**This repository contains the data and code used for the research paper "The gibbon umbrella: Acoustic monitoring demonstrates conservation spill-over for tropical rainforest birds".**
+
+
+
+**#Code**
+
+This directory has 4 R scripts to process the data and generate results in the study
+
+1\. Data importing and preparation.R
+
+This script contains the code to import and process the data and prepare for the following sections
+
+
+
+2\. Spatio-temporal patterns GLMM.R
+
+This script contains the code to perform zero-inflated generalised linear mixed-effect models for spatio-temporal patterns in activity of Hainan black-crested gibbons, bird community, and specific avian foraging guilds. It is used for plotting figures 2, 3, S1, S2 and S3.
+
+
+
+3\. Correlation between gibbons and bird activity and spp richness.R
+
+This script contains the code to perform models assessing the correlation between site-level activity of gibbons and birds in total / foraging guilds, and between gibbon activity and bird species richness. It is used for plotting figures 4 and 6.
+
+
+
+4\. Correlation between bird species and gibbon activity.R
+
+This script contains the code for processing site-level activity of individual bird species and performing correlation test with corresponding activity of gibbons. It is used for plotting figure 5.
+
+
+
+**#Data**
+
+bird\_detection.csv
+
+This CSV file contains acoustic classification results of all bird calls using the algorithm developed by Liu et al (in preparation). Due to algorithm development settings, the species names (Spp1, Spp2 and Spp3) are in Chinese, but are later converted into English in the codes. As Spp1 always has the highest confidence (Prob1), only Spp1 is used in the analysis
+
+
+
+gibbon\_detection.csv
+
+This CSV files contains acoustic classification results of Hainan black-crested gibbon calls using the algorithm developed by Wang et al (2024). The rhythm score used for selecting confidence is displayed in the "ribbit" column
+
+
+
+site\_soundscape\_indices.csv
+
+This CSV file contains soundscape indices generated for all recordings using the algorithm developed by Towsey et al (2018). It was eventually not analysed in this study, but used to match list of files to include hours with no bird/gibbon calls detected.
+
+
+
+site\_env\_vars.csv
+
+This CSV file contains environmental information of sample sites, including:
+
+* machine name
+* site ID
+* longitude, latitude (rounded to nearest 0.1 for protection of critically endangered Hainan black-crested gibbons (Nomascus Hainanus))
+* altitude
+* landscape (a measure for altitude, not used for analysis)
+* slope (1 = flat (0-5), 2 = gentle (5-15), 3 = intermediate (15-25), 4 = steep (25-35))
+* type of forest habitat
+* slope facing direction
+* canopy cover
+* type of disturbance (not used for analysis)
+* group of samplers (not used for analysis)
+
+
+
+bird\_species\_abundant.csv
+
+This CSV file contains bird species with >5 detections in the analysis, in both Chinese and Latin names
+
+
+
+bird\_species\_higherror.csv
+
+This CSV file contains bird species which were validated to have high error-classification rates,  in both Chinese and Latin names, and were removed from analysis
+
+
+
+bird\_species\_diet.csv
+
+This CSV file contains dietary preferences of bird species in China, extracted from the data by Wang et al (2021). The species names and diets are in Chinese, but are later converted into English in the codes
+
+
+
+hainan\_all\_hour\_diet.csv
+
+This CSV file is generated using the code from "1. Data importing and preparation.R". It contains the hourly detections of gibbons (n), birds in total (Total), raptors (Rapt), insectivorous birds (Inse), omnivorous birds (Omni) and florivorous birds (Flor), merged with the soundscape indices and evironmental information of sies fom above.
+
+It is used for analysis in "2. Spatio-temporal patterns GLMM.R".
+
+
+
+hainan\_bird\_hour\_sp
+
+This CSV file is generated using the code from "1. Data importing and preparation.R". It contains the hourly detections of the 28 bird species included in this study at each site. The species names are in Chinese, but are later converted into English in the codes
+
+It is used for analysis in "4. Correlation between bird species and gibbon activity.R".
+
+
+
+hainan\_bird\_site.csv
+
+This CSV file is generated using the code from "3. Correlation between gibbons and bird activity and spp richness.R". It contains the site-level activity measures of:
+
+* gibbons (Gibbon\_)
+* birds in total (Total\_)
+* raptors (Rapt\_)
+* omnivorous birds (Omni\_)
+* insectivorous birds (Inse\_)
+* florivorous birds (Flor\_)
+
+And different activity measures of each of the taxa/guild above, including:
+
+* Site-total detections (\_T)
+* Site-maximum hourly detections (\_MaxMax)
+* Site-average daily peak hourly detections (\_Amax)
+* Site-maximum daily average detections (\_MaxA)
+* Site species richness of birds in total and foraging guild (\_Count)
+
